@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Scientific Theme Colors: white, grey, red, black */
+  --color-primary-dark: #0a0a0a; /* app shell */
+  --color-primary-light: #1a1a1a; /* surfaces */
+  --color-accent-blue: #9ca3af; /* neutral grey repurposed */
+  --color-accent-teal: #dc2626; /* scientific red (kept var name for minimal refactors) */
+  --color-success-green: #16a34a;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-surface: #ffffff;
+
+  /* Typography */
+  --font-inter: "Inter", sans-serif;
+  --text-h1: 48px;
+  --text-h2: 36px;
+  --text-h3: 24px;
+  --text-body-lg: 18px;
+  --text-body: 16px;
+  --text-sm: 14px;
+
+  --leading-h1: 56px;
+  --leading-h2: 44px;
+  --leading-h3: 32px;
+  --leading-body-lg: 28px;
+  --leading-body: 24px;
+  --leading-sm: 20px;
+
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-normal: 400;
+
+  /* Border Radius */
+  --radius-card: 12px;
+  --radius-button: 8px;
+  --radius-small: 6px;
+
+  /* Shadows */
+  --shadow-subtle: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+@layer base {
+  html, body {
+    font-family: var(--font-inter);
+    color: var(--color-text-primary);
+    line-height: var(--leading-body);
+    /* Subtle scientific grid background */
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px;
+    background-position: 0 0, 0 0;
+  }
+
+.dark body {
+  background-color: var(--color-primary-dark);
+}
+
+.light body {
+  background-color: #ffffff;
+}
+
+/* Theme variable overrides */
+.light {
+  --color-text-primary: #0a0a0a;
+  --color-text-secondary: #404040;
+}
+
+/* Light mode grid lines should be dark, not white */
+.light html, .light body {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+
+/* Light mode utility overrides for commonly used tokens */
+.light .bg-primary-dark { background-color: #ffffff !important; }
+.light .bg-primary-light { background-color: #f5f5f5 !important; }
+.light .text-text-primary { color: #0a0a0a !important; }
+.light .text-text-secondary { color: #404040 !important; }
+.light .border-primary-dark { border-color: #e5e5e5 !important; }
+.light .border-primary-light { border-color: #d4d4d4 !important; }
+
+/* Optional: adjust darker "dark" palette surfaces when in light mode */
+.light .bg-dark-900 { background-color: #f5f5f5 !important; }
+.light .bg-dark-800 { background-color: #fafafa !important; }
+.light .border-dark-800 { border-color: #e5e5e5 !important; }
+.light .border-dark-700 { border-color: #e5e5e5 !important; }
+
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--leading-h1);
+    font-weight: var(--font-weight-bold);
+  }
+
+  h2 {
+    font-size: 28px; /* Smaller for mobile */
+    line-height: 36px; /* Smaller for mobile */
+    font-weight: var(--font-weight-semibold);
+  }
+
+  @media (min-width: 768px) {
+    h2 {
+      font-size: var(--text-h2); /* Original size for desktop */
+      line-height: var(--leading-h2); /* Original size for desktop */
+    }
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+    line-height: var(--leading-h3);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  /* Base styles for links */
+  a {
+    color: var(--color-accent-teal);
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  a:hover {
+    opacity: 0.9;
+  }
+}
+
+@layer utilities {
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slideDown {
+    animation: slideDown 0.3s ease;
+  }
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 10px; /* For vertical scrollbars */
+  height: 10px; /* For horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-primary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-light);
+  border-radius: 10px; /* Rounded corners for the thumb */
+  border: 2px solid var(--color-primary-dark); /* Padding around the thumb */
+}
+
+/* On hover, make the thumb slightly lighter */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-teal); 
+}
+
+/* Light mode scrollbar adjustments */
+.light ::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+.light ::-webkit-scrollbar-thumb {
+  background: #d4d4d4;
+  border-color: #f5f5f5;
+}
+
+.current-highlight {
+  background-color: rgba(220, 38, 38, 0.35);
+  color: #ffffff;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
