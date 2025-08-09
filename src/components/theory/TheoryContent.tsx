@@ -90,6 +90,17 @@ export default function TheoryContent({ theory, highlightTerm, onHighlightsFound
                 </p>
               </div>
             )}
+            
+            {section.type === 'image' && (
+              <figure className="my-8">
+                <img src={section.src} alt={section.alt} className="max-w-lg w-full h-auto mx-auto rounded-lg shadow-md" />
+                {section.caption && (
+                  <figcaption className="text-center text-text-secondary text-sm mt-2">
+                    {highlightText(section.caption, highlightTerm, setHighlightRef)}
+                  </figcaption>
+                )}
+              </figure>
+            )}
           </div>
         ))}
       </div>

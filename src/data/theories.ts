@@ -1,7 +1,8 @@
 export type SectionType = 
   | { type: 'paragraph'; content: string }
   | { type: 'heading'; content: string }
-  | { type: 'highlight'; content: string; title?: string };
+  | { type: 'highlight'; content: string; title?: string }
+  | { type: 'image'; src: string; alt: string; caption?: string };
 
 export type TheoryType = {
   id: string;
@@ -356,6 +357,34 @@ export const theories: Record<string, TheoryType> = {
       {
         type: 'paragraph',
         content: 'Bagi bangsa Indonesia secara keseluruhan, penelitian ini dapat menjadi bahan pertimbangan nyata dalam memilih pemimpin yang akan menentukan masa depan bangsa Indonesia, serta meningkatkan literasi digital dan kesadaran politik generasi muda.'
+      }
+    ]
+  },
+
+  digital_literacy_importance: {
+    id: 'digital_literacy_importance',
+    shortTitle: 'Digital Literacy Importance',
+    title: 'Pentingnya Literasi Digital di Era Disinformasi', 
+    tags: ['Digital Literacy', 'Critical Thinking', 'Disinformation', 'Media Education'],
+    sections: [
+      {
+        type: 'paragraph',
+        content: 'Di era digital saat ini, kemampuan untuk memilah informasi yang benar dari disinformasi menjadi krusial. Literasi digital bukan hanya tentang kemampuan menggunakan teknologi, tetapi juga memahami bagaimana informasi diproduksi, disebarkan, dan dikonsumsi di platform digital. Tanpa literasi digital yang kuat, individu, terutama generasi muda, sangat rentan terhadap berbagai bentuk manipulasi, termasuk kampanye buzzer.'
+      },
+      {
+        type: 'image',
+        src: '/images/prove1.jpg',
+        alt: 'Ilustrasi tentang literasi digital dengan seseorang sedang membaca berita di tablet dan dikelilingi oleh ikon-ikon media sosial dan informasi.',
+        caption: 'Meningkatkan literasi digital adalah kunci untuk melawan penyebaran disinformasi.'
+      },
+      {
+        type: 'paragraph',
+        content: 'Meningkatkan literasi digital melibatkan pengembangan kemampuan berpikir kritis, evaluasi sumber informasi, dan pemahaman tentang bias media. Ini memberdayakan individu untuk menjadi konsumen informasi yang lebih bertanggung jawab dan aktif dalam ekosistem digital.'
+      },
+      {
+        type: 'highlight',
+        title: 'Empowering Citizens',
+        content: 'Literasi digital membekali masyarakat dengan alat untuk mengenali dan menolak narasi palsu, serta berkontribusi pada ruang publik yang lebih informatif dan demokratis.'
       }
     ]
   }
