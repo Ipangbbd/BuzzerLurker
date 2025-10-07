@@ -110,7 +110,7 @@ export default function ResearchGallery() {
             <img
               src={image.url}
               alt={image.title}
-              loading="lazy"
+              loading="eager"
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-opacity duration-300 flex items-end light:bg-white/0 light:group-hover:bg-neutral-900/15">
